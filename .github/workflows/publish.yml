@@ -8,10 +8,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read  # required for release downloads
+      contents: read
 
     steps:
-      - name: Check out the repository
+      - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -27,5 +27,5 @@ jobs:
       - name: Build the package
         run: python -m build
 
-      - name: Publish package to PyPI
+      - name: Publish to PyPI
         run: python -m twine upload dist/* -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
